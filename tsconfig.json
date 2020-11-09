@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es5",
+      "es6",
+      "ESNext.AsyncIterable"
+    ],
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "esnext",
+    "outDir": "./dist",
+    "baseUrl": "src",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  }
+}
