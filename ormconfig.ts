@@ -11,6 +11,7 @@ const connectionConfig: ConnectionOptions = {
   database: process.env.DATABASE_BASE,
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASS,
+  ssl: { rejectUnauthorized: false },
   synchronize: false,
   logging: true,
   entities: [__dirname + '/src/modules/**/models/*.entity{.js,.ts}'],
