@@ -6,6 +6,7 @@ import {
   Inject,
   Param,
   Post,
+  Query,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -16,6 +17,7 @@ import { CreateEstablishmentService } from '../services/create-establishment.ser
 import { ICreateNewEstablishment } from '../dtos/ICreateNewEstablishment.dto';
 import { UserJwtDTO } from 'request_dto';
 import { DeleteEstablishmentService } from '../services/delete-establishment.service';
+import { ListAllFiltersEstablishmentsService } from '../services/list-all-filters-establishments.service';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('establishments')
@@ -29,11 +31,15 @@ export class EstablishmentsController {
 
     @Inject('DeleteEstablishmentService')
     private readonly deleteEstablishmentService: DeleteEstablishmentService,
+
+    @Inject('ListAllFiltersEstablishmentsService')
+    private readonly listAllFiltersEstablishmentsService: ListAllFiltersEstablishmentsService,
   ) {}
 
   @Get()
-  async getAll() {
-    const establishments = await this.getAllService.execute();
+  async getAll(@Query() queryParams: any) {
+    console.log(queryParams);
+    const establishments = await this.getAllService.execute(queryParams);
 
     return establishments;
   }
@@ -56,5 +62,12 @@ export class EstablishmentsController {
     const result = await this.deleteEstablishmentService.execute(id, user);
 
     return result;
+  }
+
+  @Get('filters')
+  async getAllFilters() {
+    const filters = await this.listAllFiltersEstablishmentsService.execute();
+
+    return filters;
   }
 }

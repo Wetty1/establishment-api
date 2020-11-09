@@ -21,13 +21,18 @@ export class CreateEstablishmentService {
     if (!user || user.level !== 1)
       throw new UnauthorizedException('You do not have permission');
 
+    const capitalize = (s) => {
+      if (typeof s !== 'string') return '';
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    };
+
     const coordinates = await getCoordinates(`${address}, ${city}`);
 
     const newEstablishment = this.establishmentRepository.create({
       address,
-      city,
-      neighborhood,
-      type,
+      city: capitalize(city),
+      neighborhood: capitalize(neighborhood),
+      type: capitalize(type),
       coordinates,
       userid: user.userid,
     });

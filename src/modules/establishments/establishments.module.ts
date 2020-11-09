@@ -5,6 +5,7 @@ import { CreateEstablishmentService } from './services/create-establishment.serv
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Establishments } from './models/establishment.entity';
 import { DeleteEstablishmentService } from './services/delete-establishment.service';
+import { ListAllFiltersEstablishmentsService } from './services/list-all-filters-establishments.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Establishments])],
@@ -13,6 +14,7 @@ import { DeleteEstablishmentService } from './services/delete-establishment.serv
     GetAllEstablishmentsService,
     CreateEstablishmentService,
     DeleteEstablishmentService,
+    ListAllFiltersEstablishmentsService,
   ],
 })
 export class EstablishmentsModule {}
