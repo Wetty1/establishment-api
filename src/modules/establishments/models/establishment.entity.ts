@@ -18,7 +18,7 @@ export class Establishments {
   userid: string;
 
   @ManyToOne(() => User, (user) => user.id)
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'userid' })
   user: User;
 
   @Column()
